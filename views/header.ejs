@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="utf-8">
+    <title>Elite Decor</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+</head>
+
+<body>
+    <div id="page-container">
+        <nav class="navbar navbar-dark navbar-expand-lg">
+
+            <a class="navbar-brand" href="/">
+                <img src="/images/android-chrome-512x512.png" id="logo">
+            </a>
+            <ul class="navbar-nav">
+                <li class="nav-item " id="elite-decor">
+                    <a class="nav-link" href="/" onmouseenter="myMove(this)"><b>Elite Decor</b></a>
+                </li>
+            </ul>
+            <button class="navbar-toggler ml-auto" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <i class="fa fa-navicon" ></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/kitchen" onmouseenter="myMove(this)"><b>Kitchen</b></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/bedroom" onmouseenter="myMove(this)"><b>Bedroom</b></a>
+                    </li>
+                    <li class="nav-item" id="2">
+                        <a class="nav-link" href="/others" onmouseenter="myMove(this)"><b>Other interiors</b></a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact" onmouseenter="myMove(this)"><b>Contact Us</b></a>
+                    </li>
+                    <span id="line"></span>
+                </ul>
+            </div>
+        </nav>
+        <script>
+            function myMove(x) {
+                var elem = document.getElementById("line");
+                elem.style.height = "3px";
+                elem.style.backgroundColor = "white";
+                elem.style.position = "absolute";
+                elem.style.left = "0px";
+                var pos = 0;
+                var leftpos = Math.floor(x.getBoundingClientRect().left);
+                var toppos = Math.floor(x.getBoundingClientRect().bottom);
+                var w = Math.floor(x.getBoundingClientRect().right - x.getBoundingClientRect().left);
+                elem.style.width = w + "px";
+                elem.style.top = toppos + "px";
+                var id = setInterval(frame, 5);
+
+                function frame() {
+                    var n = Math.floor(leftpos / 10);
+                    var t = Math.floor(n * 10);
+                    var r = Math.abs(Math.floor(leftpos - t));
+                    if (pos == t) {
+                        pos = pos + r;
+                        elem.style.left = pos + "px";
+                        clearInterval(id);
+                    } else {
+                        pos = pos + 10;
+                        elem.style.left = pos + "px";
+                    }
+                }
+            }
+            $(document).ready(function() {
+                $('.dropdown-submenu a.test').on("click", function(e) {
+                    $(this).next('ul').toggle();
+                    e.stopPropagation();
+                    e.preventDefault();
+                });
+            });
+        </script>
+
+        <div id="content-wrap">
+            <div id="page-container">

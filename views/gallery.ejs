@@ -1,0 +1,85 @@
+<%- include('header')%>
+<div id="gallery">
+<div id="gallery-container">
+    <h3>
+        <%= heading %>
+    </h3>
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Filter<span class="caret"></span>
+    </button>
+        <form action="/<%= heading %>/filter" method="POST">
+            <ul class="dropdown-menu">
+                <li class="dropdown-submenu">
+                    <a class="test" >Modern</a>
+                    <ul class="dropdown-menu" id="dropdown-menu0">
+                        <li><input type="radio"  value="Yellow" name="color"><label>Yellow&nbsp;&nbsp;</label><i class="fa fa-square" style="font-size:24px;color: yellow;"></i></li>
+                        <li><input type="radio"  value="Red" name="color"><label>Red&nbsp;&nbsp;</label><i class="fa fa-square" style="font-size:24px;color: red;"></i></li>
+                        <li><input type="radio"  value="Blue" name="color"><label>Blue&nbsp;&nbsp;</label><i class="fa fa-square" style="font-size:24px;color: blue;"></i></li>
+                        <li><input type="radio"  value="Brown" name="color"><label>Brown&nbsp;&nbsp;</label><i class="fa fa-square" style="font-size:24px;color: brown;"></i></li>
+                        <li><input type="radio"  value="Green" name="color"><label>Green&nbsp;&nbsp;</label><i class="fa fa-square" style="font-size:24px;color: green;"></i></li>
+                        <button type="submit" class="btn btn-secondary">Apply </button>
+                    </ul>
+                </li>
+
+                <li class="dropdown-submenu">
+                    <a class="test">Traditional</a>
+                    <ul class="dropdown-menu" id="dropdown-menu-1">
+                        <li><input type="radio"  value="Yellow" name="color"><label>Yellow&nbsp;&nbsp;</label><i class="fa fa-square" style="font-size:24px;color:yellow;"></i></li>
+                        <li><input type="radio"  value="Red" name="color"><label>Red&nbsp;&nbsp;</label><i class="fa fa-square" style="font-size:24px;color: red;"></i></li>
+                        <li><input type="radio"  value="Blue" name="color"><label>Blue&nbsp;&nbsp;</label><i class="fa fa-square" style="font-size:24px;color: blue;"></i></li>
+                        <li><input type="radio"  value="Brown" name="color"><label>Brown&nbsp;&nbsp;</label><i class="fa fa-square" style="font-size:24px;color: brown;"></i></li>
+                        <li><input type="radio"  value="Green" name="color"><label>Green&nbsp;&nbsp;</label><i class="fa fa-square" style="font-size:24px;color: green;"></i></li>
+                        <button type="submit" class="btn btn-secondary">Apply </button>
+                    </ul>
+                </li>
+            </ul>
+        </form>
+    </div>
+    <br>
+    <% for(var i=0;i<data.length;i=i+3){ %>
+        <div class="row">
+            <% for(var j=i;(j<data.length && j<i+3);j++){ %>
+                <div class="col-md-4">
+                    <div class="card" data-toggle="modal" data-target="#exampleModal<%=j%>">
+                        <img class="card-img-top img-rounded img-gallery" src='/images/<%= data[j].image%>'  alt="Card image cap">
+                        <div class="card-body">
+                            <p class="card-text" ><%= data[j].name%></p>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal fade" id="exampleModal<%=j%>" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">
+                                    <%= data[j].name%>
+                                </h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                   <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-6">
+                                        <img class="img-gallery" src='/images/<%= data[j].image%>'  alt="Card image cap">
+                                    </div>
+                                    <div class="col-6 jumbotron">
+                                        <%= data[j].description%>
+                                        <p>Specifications</p>
+                                        <p>Color :<%= data[j].color%></p>
+                                        <p>Type :<%= data[j].type%></p>
+                                        <p>Size :<%= data[j].size%></p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <% } %>
+        </div>
+        <br>
+        <% } %>
+    </div>
+</div>
+<%- include('footer')%>

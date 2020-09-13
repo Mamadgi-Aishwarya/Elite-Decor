@@ -1,0 +1,41 @@
+<%- include('header')%>
+    <section class="contact-us" id="contact">
+        <div class="container">
+            <div class="row">
+                <div class="section-title text-center">
+                    <h1>Contact Us</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="contact-form">
+                    <div class="row">
+                        <div class="text">
+                            <h2>Drop Us a line</h2>
+                            <p>We are here to answer any question you may have</p>
+                        </div>
+                    </div>
+                    <form action="/user/contact" method="POST">
+                    <div class="row space-between">
+                        <div class="col-6">
+                            <input type="text" class="form-control" name="name" placeholder="Name" required>
+                        </div>
+                        <div class="col-6">
+                            <input type="text" class="form-control" name="email" placeholder="Email" required>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12">
+                            <textarea class="form-control" name="comment" placeholder="Your Comment" required></textarea>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="button text-center">
+                            <button type="submit">Get In Touch</button>
+                        </div>
+                    </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+    <%- include('footer')%>
